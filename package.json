@@ -1,0 +1,46 @@
+{
+  "name": "@market-4-test/ws-contract-ts",
+  "version": "0.0.20",
+  "private": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "bun run clean && bun run gen-index && bun build ./src/index.ts --outdir=dist && tsc",
+    "gen-index": "bun gen-index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/market-4-test/ws-contract-ts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/market-4-test/ws-contract-ts/issues"
+  },
+  "homepage": "https://github.com/market-4-test/ws-contract-ts#readme",
+  "description": "",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "@protobuf-ts/runtime": "^2.9.6",
+    "@protobuf-ts/runtime-rpc": "^2.9.6"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.13",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.0.0"
+  }
+}

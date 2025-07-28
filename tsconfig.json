@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "allowJs": true,
+
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": false,
+    "verbatimModuleSyntax": true,
+    "noEmit": false,
+
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false,
+
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "paths": {
+      "../google/protobuf/empty": ["./contract/google/protobuf/empty.ts"],
+      "../google/protobuf/any": ["./contract/google/protobuf/any.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
+}

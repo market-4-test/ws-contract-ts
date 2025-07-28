@@ -1,0 +1,32 @@
+name: Publish Package in GitHub NPM Registry
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v3
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install deps
+        run: bun install
+
+      - name: Сборка
+        run: bun run build
+
+      - name: Setting .npmrc for auth
+        run: |
+          echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.REPO_PACKAGE_TOKEN }}" >> .npmrc
+
+      - name: Publish package
+        run: bun run npm publish
