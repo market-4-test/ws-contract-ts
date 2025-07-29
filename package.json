@@ -1,6 +1,6 @@
 {
   "name": "@market-4-test/ws-contract-ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "files": [
     "dist"

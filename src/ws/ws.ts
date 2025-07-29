@@ -18,9 +18,9 @@ import { Any } from "../google/protobuf/any";
  */
 export interface GetSubscribesByUserParams {
     /**
-     * @generated from protobuf field: int32 user_id = 1
+     * @generated from protobuf field: string user_id = 1
      */
-    userId: number;
+    userId: string;
 }
 /**
  * @generated from protobuf message ws.GetSubscribesByUserResponse
@@ -36,9 +36,9 @@ export interface GetSubscribesByUserResponse {
  */
 export interface ToggleSubscribeParams {
     /**
-     * @generated from protobuf field: int32 user_id = 1
+     * @generated from protobuf field: string user_id = 1
      */
-    userId: number;
+    userId: string;
     /**
      * @generated from protobuf field: repeated string topics = 2
      */
@@ -83,12 +83,12 @@ export interface PublishMessage {
 class GetSubscribesByUserParams$Type extends MessageType<GetSubscribesByUserParams> {
     constructor() {
         super("ws.GetSubscribesByUserParams", [
-            { no: 1, name: "user_id", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "user_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<GetSubscribesByUserParams>): GetSubscribesByUserParams {
         const message = globalThis.Object.create((this.messagePrototype!));
-        message.userId = 0;
+        message.userId = "";
         if (value !== undefined)
             reflectionMergePartial<GetSubscribesByUserParams>(this, message, value);
         return message;
@@ -98,8 +98,8 @@ class GetSubscribesByUserParams$Type extends MessageType<GetSubscribesByUserPara
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 user_id */ 1:
-                    message.userId = reader.int32();
+                case /* string user_id */ 1:
+                    message.userId = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -113,9 +113,9 @@ class GetSubscribesByUserParams$Type extends MessageType<GetSubscribesByUserPara
         return message;
     }
     internalBinaryWrite(message: GetSubscribesByUserParams, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 user_id = 1; */
-        if (message.userId !== 0)
-            writer.tag(1, WireType.Varint).int32(message.userId);
+        /* string user_id = 1; */
+        if (message.userId !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.userId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -177,13 +177,13 @@ export const GetSubscribesByUserResponse = new GetSubscribesByUserResponse$Type(
 class ToggleSubscribeParams$Type extends MessageType<ToggleSubscribeParams> {
     constructor() {
         super("ws.ToggleSubscribeParams", [
-            { no: 1, name: "user_id", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "user_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "topics", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<ToggleSubscribeParams>): ToggleSubscribeParams {
         const message = globalThis.Object.create((this.messagePrototype!));
-        message.userId = 0;
+        message.userId = "";
         message.topics = [];
         if (value !== undefined)
             reflectionMergePartial<ToggleSubscribeParams>(this, message, value);
@@ -194,8 +194,8 @@ class ToggleSubscribeParams$Type extends MessageType<ToggleSubscribeParams> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 user_id */ 1:
-                    message.userId = reader.int32();
+                case /* string user_id */ 1:
+                    message.userId = reader.string();
                     break;
                 case /* repeated string topics */ 2:
                     message.topics.push(reader.string());
@@ -212,9 +212,9 @@ class ToggleSubscribeParams$Type extends MessageType<ToggleSubscribeParams> {
         return message;
     }
     internalBinaryWrite(message: ToggleSubscribeParams, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 user_id = 1; */
-        if (message.userId !== 0)
-            writer.tag(1, WireType.Varint).int32(message.userId);
+        /* string user_id = 1; */
+        if (message.userId !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.userId);
         /* repeated string topics = 2; */
         for (let i = 0; i < message.topics.length; i++)
             writer.tag(2, WireType.LengthDelimited).string(message.topics[i]);
